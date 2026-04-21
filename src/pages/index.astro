@@ -3,79 +3,60 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Giambattista Carmignani">
-	<main class="w-full max-w-[640px] px-6 relative z-10 flex flex-col items-center">
+<Layout title="giamba.me">
+	<main class="w-full min-h-screen flex flex-col items-center justify-center px-6 py-12 max-w-6xl mx-auto">
 		
-		<div class="w-full bg-white/80 backdrop-blur-2xl border border-white/40 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ring-1 ring-black/5"
-             id="spotlight-container">
-            
-            <div class="flex items-center p-4">
-                
-                <div class="w-12 h-12 rounded-xl overflow-hidden shrink-0 mr-5 shadow-sm relative group cursor-default">
-                     <img src="/logo_giambame.jpg" alt="g." class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
-                </div>
-                
-                <div class="flex-1 flex flex-col justify-center h-12">
-                    <input 
-                        type="text" 
-                        class="w-full bg-transparent text-2xl font-light text-gray-900 placeholder-gray-400 outline-none border-none focus:ring-0 p-0 tracking-tight cursor-default"
-                        readonly
-                        value="Giambattista Carmignani"
-                    />
-                    <span class="text-[11px] text-gray-400 uppercase tracking-widest font-semibold pl-[1px] mt-0.5">Operational Leader & Tech Mindset</span>
-                </div>
+		<div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-16 text-center md:text-left">
+			
+			<div class="h-8 md:h-10 w-auto flex items-center justify-center shrink-0">
+				<img src="/logo.svg" alt="giamba.me" class="h-full w-auto block overflow-visible" />
+			</div>
+			
+			<h1 class="text-3xl font-light tracking-tight text-gray-900">
+				Giambattista Carmignani
+			</h1>
+
+            <div class="hidden md:block w-px h-8 bg-gray-300"></div>
+			
+			<p class="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-semibold">
+				Operational Leader & Tech Mindset
+			</p>
+		</div>
+
+		<div class="w-full max-w-3xl flex flex-col md:flex-row items-center gap-4">
+			
+			<div class="flex-1 flex items-center gap-3 bg-white border border-gray-200/80 px-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative h-14 w-full">
+				<div class="text-gray-400">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M21 21L15.0001 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</div>
+				<input 
+					type="text" 
+					placeholder="Cerca un progetto o competenza..." 
+					class="w-full bg-transparent text-lg font-light text-gray-800 placeholder-gray-400/70 outline-none border-none p-0 tracking-tight cursor-default"
+					readonly
+				/>
 			</div>
 
-            <div class="h-px w-full bg-gradient-to-r from-transparent via-gray-300/50 to-transparent"></div>
+			<div class="flex items-center gap-2">
+				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-orange-200 hover:bg-orange-50 text-gray-400 hover:text-orange-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer" title="Bio">
+					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+				</button>
 
-            <div id="content-area" class="transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] overflow-hidden">
-                <div class="p-6 bg-white/40 text-gray-600 space-y-5 leading-relaxed font-light text-[16px]">
-                    
-                    <p>
-                        Unisco <span class="font-medium text-gray-900">20 anni di leadership operativa</span> e disciplina sportiva (Ex-atleta Pro) con una formazione ingegneristica.
-                    </p>
-                    <p>
-                        Applico il <strong class="font-semibold text-gray-900">pensiero algoritmico</strong> per risolvere problemi reali. Parlo la lingua della tecnologia per guidare strategie, non solo per scrivere sintassi.
-                    </p>
-                    
-                    <div class="pt-2 flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white/60 border border-gray-200 rounded-md text-xs font-medium text-gray-500">Efficienza</span>
-                        <span class="px-3 py-1 bg-white/60 border border-gray-200 rounded-md text-xs font-medium text-gray-500">Struttura</span>
-                        <span class="px-3 py-1 bg-white/60 border border-gray-200 rounded-md text-xs font-medium text-gray-500">Identità Digitale</span>
-                    </div>
-                </div>
-            </div>
+				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-blue-200 hover:bg-blue-50 text-gray-400 hover:text-blue-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer" title="Works">
+					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+				</button>
 
-            <div class="bg-gray-50/50 backdrop-blur-sm p-3 flex justify-between items-center text-xs text-gray-500 font-medium border-t border-white/60">
-				
-                <div class="flex gap-2">
-                    <button class="flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-white hover:shadow-sm transition-all text-gray-600 group" data-target="bio">
-                        <svg class="w-4 h-4 text-gray-400 group-hover:text-orange-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                        <span>Bio</span>
-                    </button>
+				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-green-200 hover:bg-green-50 text-gray-400 hover:text-green-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer" title="Mail" onclick="window.location.href='mailto:giambattista.carmignani@gmail.com'">
+					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+				</button>
 
-                    <button class="flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-white hover:shadow-sm transition-all text-gray-600 group" data-target="works">
-                        <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-                        <span>Works</span>
-                    </button>
-                </div>
-
-                <button class="flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-green-50 hover:text-green-700 transition-all text-gray-600" onclick="window.location.href='mailto:giambattista.carmignani@gmail.com'">
-                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                    <span>Contact</span>
-                </button>
-                
+				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-yellow-200 hover:bg-yellow-50 text-gray-400 hover:text-yellow-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer" title="Social">
+					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+				</button>
 			</div>
 		</div>
-        
-        <div class="mt-8 opacity-30 text-[10px] uppercase tracking-widest font-semibold hover:opacity-100 transition-opacity">
-            Press Bio to Inspect
-        </div>
 
 	</main>
 </Layout>
-
-<script>
-    const bioBtn = document.querySelector('button[data-target="bio"]');
-    // Logica futura per interazione
-</script>
