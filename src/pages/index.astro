@@ -7,17 +7,13 @@ import Layout from '../layouts/Layout.astro';
 	<main class="w-full min-h-screen flex flex-col items-center justify-center px-6 py-12 max-w-6xl mx-auto">
 		
 		<div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-16 text-center md:text-left">
-			
 			<div class="h-8 md:h-10 w-auto flex items-center justify-center shrink-0">
 				<img src="/logo.svg" alt="giamba.me" class="h-full w-auto block overflow-visible" />
 			</div>
-			
 			<h1 class="text-3xl font-light tracking-tight text-gray-900">
 				Giambattista Carmignani
 			</h1>
-
             <div class="hidden md:block w-px h-8 bg-gray-300"></div>
-			
 			<p class="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-semibold">
 				Operational Leader & Tech Mindset
 			</p>
@@ -25,38 +21,76 @@ import Layout from '../layouts/Layout.astro';
 
 		<div class="w-full max-w-3xl flex flex-col md:flex-row items-center gap-4">
 			
-			<div class="flex-1 flex items-center gap-3 bg-white border border-gray-200/80 px-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative h-14 w-full">
+			<div class="flex-1 flex items-center gap-3 bg-white border border-gray-200/80 px-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-14 w-full">
 				<div class="text-gray-400">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M21 21L15.0001 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
 				</div>
-				<input 
-					type="text" 
-					placeholder="Cerca un progetto o competenza..." 
-					class="w-full bg-transparent text-lg font-light text-gray-800 placeholder-gray-400/70 outline-none border-none p-0 tracking-tight cursor-default"
-					readonly
-				/>
+				<input type="text" placeholder="Cerca un progetto o competenza..." class="w-full bg-transparent text-lg font-light text-gray-800 placeholder-gray-400/70 outline-none border-none p-0 tracking-tight" readonly />
 			</div>
 
-			<div class="flex items-center gap-2">
-				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-orange-200 hover:bg-orange-50 text-gray-400 hover:text-orange-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer" title="Bio">
+			<div class="flex items-center gap-2 relative">
+				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-orange-200 hover:bg-orange-50 text-gray-400 hover:text-orange-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Bio">
 					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
 				</button>
 
-				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-blue-200 hover:bg-blue-50 text-gray-400 hover:text-blue-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer" title="Works">
+				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-blue-200 hover:bg-blue-50 text-gray-400 hover:text-blue-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Works">
 					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
 				</button>
 
-				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-green-200 hover:bg-green-50 text-gray-400 hover:text-green-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer" title="Mail" onclick="window.location.href='mailto:giambattista.carmignani@gmail.com'">
+				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-green-200 hover:bg-green-50 text-gray-400 hover:text-green-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Mail" onclick="window.location.href='mailto:giambattista.carmignani@gmail.com'">
 					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
 				</button>
 
-				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-yellow-200 hover:bg-yellow-50 text-gray-400 hover:text-yellow-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] group cursor-pointer" title="Social">
-					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-				</button>
+				<div class="relative" id="social-menu-container">
+					<button id="social-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-yellow-200 hover:bg-yellow-50 text-gray-400 hover:text-yellow-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Social">
+						<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+					</button>
+
+					<div id="social-dropdown" class="absolute top-full right-0 mt-4 w-48 bg-white border border-gray-200 rounded-2xl shadow-xl opacity-0 -translate-y-2 pointer-events-none transition-all duration-200 z-50">
+						<div class="p-2 flex flex-col gap-1">
+							<a href="https://www.linkedin.com/in/giambattista-carmignani/" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors">
+								<span class="text-sm font-medium">LinkedIn</span>
+							</a>
+							<a href="https://substack.com/@giambadotme" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors">
+								<span class="text-sm font-medium">Substack</span>
+							</a>
+							<a href="https://github.com/giamba-c" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors">
+								<span class="text-sm font-medium">GitHub</span>
+							</a>
+							<a href="https://bsky.app/profile/giamba-me.bsky.social" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors">
+								<span class="text-sm font-medium">Bluesky</span>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-
 	</main>
 </Layout>
+
+<script>
+	const button = document.getElementById('social-button');
+	const dropdown = document.getElementById('social-dropdown');
+	const container = document.getElementById('social-menu-container');
+
+	button?.addEventListener('click', (e) => {
+		e.stopPropagation();
+		dropdown?.classList.toggle('opacity-0');
+		dropdown?.classList.toggle('-translate-y-2'); // Invertito per scivolare verso il basso
+		dropdown?.classList.toggle('pointer-events-none');
+	});
+
+	// Chiude il menu se si clicca fuori
+	document.addEventListener('click', (e) => {
+		if (!container?.contains(e.target as Node)) {
+			dropdown?.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+		}
+	});
+
+	// Chiude il menu premendo il tasto Esc
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && !dropdown?.classList.contains('opacity-0')) {
+			dropdown?.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+		}
+	});
+</script>
