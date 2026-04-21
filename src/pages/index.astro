@@ -29,7 +29,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 
 			<div class="flex items-center gap-2 relative">
-				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-orange-200 hover:bg-orange-50 text-gray-400 hover:text-orange-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Bio">
+				<button id="bio-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-orange-200 hover:bg-orange-50 text-gray-400 hover:text-orange-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Bio">
 					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
 				</button>
 
@@ -45,52 +45,118 @@ import Layout from '../layouts/Layout.astro';
 					<button id="social-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-yellow-200 hover:bg-yellow-50 text-gray-400 hover:text-yellow-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Social">
 						<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
 					</button>
-
 					<div id="social-dropdown" class="absolute top-full right-0 mt-4 w-48 bg-white border border-gray-200 rounded-2xl shadow-xl opacity-0 -translate-y-2 pointer-events-none transition-all duration-200 z-50">
 						<div class="p-2 flex flex-col gap-1">
-							<a href="https://www.linkedin.com/in/giambattista-carmignani/" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors">
-								<span class="text-sm font-medium">LinkedIn</span>
-							</a>
-							<a href="https://substack.com/@giambadotme" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors">
-								<span class="text-sm font-medium">Substack</span>
-							</a>
-							<a href="https://github.com/giamba-c" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors">
-								<span class="text-sm font-medium">GitHub</span>
-							</a>
-							<a href="https://bsky.app/profile/giamba-me.bsky.social" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors">
-								<span class="text-sm font-medium">Bluesky</span>
-							</a>
+							<a href="URL_LINKEDIN" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">LinkedIn</span></a>
+							<a href="URL_SUBSTACK" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">Substack</span></a>
+							<a href="URL_GITHUB" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">GitHub</span></a>
+							<a href="URL_BLUESKY" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">Bluesky</span></a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
+
+	<div id="bio-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-gray-900/20 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-white w-full max-w-4xl rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-y-auto max-h-[90vh] md:max-h-none md:overflow-visible transform scale-95 transition-transform duration-300 relative flex flex-col md:flex-row custom-scrollbar">
+        
+        <button id="close-bio" class="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-gray-800 transition-colors cursor-pointer p-2 bg-white/80 backdrop-blur-sm md:bg-transparent rounded-full z-10">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+
+        <div class="w-full md:w-2/5 h-64 md:h-auto relative bg-gray-100 shrink-0">
+            <img src="/Foto.jpeg" alt="Giambattista Carmignani" class="absolute inset-0 w-full h-full object-cover object-center" />
+        </div>
+        
+        <div class="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
+            <div class="mb-8">
+                <span class="text-[10px] text-orange-500 uppercase tracking-[0.2em] font-bold mb-2 block">Profilo</span>
+                <h2 class="text-4xl font-light text-gray-900 tracking-tight">Giambattista<br/>Carmignani</h2>
+            </div>
+            
+            <div class="space-y-6 text-gray-600 leading-relaxed font-light text-base md:text-lg">
+                <p>
+                    Appassionato di efficienza e innovazione, opero all'intersezione tra <strong class="font-medium text-gray-900">leadership operativa</strong> e <strong class="font-medium text-gray-900">visione tecnologica</strong>. Credo fermamente che la complessità debba essere gestita con precisione, trasformandola in processi fluidi e scalabili.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-gray-100">
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-3">Background</h3>
+                        <p class="text-sm leading-relaxed">
+                            Costruisco e ottimizzo flussi di lavoro, connettendo le esigenze strategiche di business con soluzioni tecnologiche all'avanguardia.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-3">Approccio</h3>
+                        <p class="text-sm italic text-gray-500">
+                            "L'essenziale è il punto di arrivo di ogni processo gestito con estremo successo e cura nei dettagli."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Una piccola rifinitura per rendere la scrollbar discreta su mobile */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #e5e7eb;
+        border-radius: 10px;
+    }
+</style>
+
 </Layout>
 
 <script>
-	const button = document.getElementById('social-button');
-	const dropdown = document.getElementById('social-dropdown');
-	const container = document.getElementById('social-menu-container');
+	const socialBtn = document.getElementById('social-button');
+	const socialDropdown = document.getElementById('social-dropdown');
+	const socialContainer = document.getElementById('social-menu-container');
 
-	button?.addEventListener('click', (e) => {
+	socialBtn?.addEventListener('click', (e) => {
 		e.stopPropagation();
-		dropdown?.classList.toggle('opacity-0');
-		dropdown?.classList.toggle('-translate-y-2'); // Invertito per scivolare verso il basso
-		dropdown?.classList.toggle('pointer-events-none');
+		socialDropdown?.classList.toggle('opacity-0');
+		socialDropdown?.classList.toggle('-translate-y-2');
+		socialDropdown?.classList.toggle('pointer-events-none');
 	});
 
-	// Chiude il menu se si clicca fuori
+	const bioBtn = document.getElementById('bio-button');
+	const bioModal = document.getElementById('bio-modal');
+	const bioCard = bioModal?.querySelector('div');
+	const closeBio = document.getElementById('close-bio');
+
+	const openBio = () => {
+		bioModal?.classList.remove('opacity-0', 'pointer-events-none');
+		bioCard?.classList.remove('scale-95');
+		bioCard?.classList.add('scale-100');
+	};
+
+	const hideBio = () => {
+		bioModal?.classList.add('opacity-0', 'pointer-events-none');
+		bioCard?.classList.remove('scale-100');
+		bioCard?.classList.add('scale-95');
+	};
+
+	bioBtn?.addEventListener('click', openBio);
+	closeBio?.addEventListener('click', hideBio);
+
 	document.addEventListener('click', (e) => {
-		if (!container?.contains(e.target as Node)) {
-			dropdown?.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+		if (!socialContainer?.contains(e.target)) {
+			socialDropdown?.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
 		}
+		if (e.target === bioModal) hideBio();
 	});
 
-	// Chiude il menu premendo il tasto Esc
 	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape' && !dropdown?.classList.contains('opacity-0')) {
-			dropdown?.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+		if (e.key === 'Escape') {
+			socialDropdown?.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+			if (!bioModal?.classList.contains('opacity-0')) hideBio();
 		}
 	});
 </script>
