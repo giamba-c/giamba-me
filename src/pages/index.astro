@@ -19,48 +19,50 @@ import Layout from '../layouts/Layout.astro';
 			</p>
 		</div>
 
-		<div class="w-full max-w-3xl flex flex-col md:flex-row items-center gap-4">
-			
-			<div class="flex-1 relative w-full" id="search-container">
-	<div class="flex items-center gap-3 bg-white border border-gray-200/80 px-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-14 w-full focus-within:border-orange-200 focus-within:ring-4 focus-within:ring-orange-50/50 transition-all z-50 relative">
-		<div class="text-gray-400">
-			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-		</div>
-		<input type="text" id="search-input" placeholder="Cerca un progetto o competenza..." class="w-full bg-transparent text-lg font-light text-gray-800 placeholder-gray-400/70 outline-none border-none p-0 tracking-tight" autocomplete="off" />
-		
-		<div class="hidden sm:flex items-center justify-center px-2 py-1 bg-gray-50 border border-gray-200 rounded-md text-xs text-gray-400 font-mono tracking-widest cursor-default">⌘K</div>
-	</div>
+		<div class="w-full max-w-3xl relative" id="search-and-icons-wrapper">
+    
+			<div class="w-full flex flex-col md:flex-row items-center gap-4 relative z-50">
+				
+				<div class="flex-1 flex items-center gap-3 bg-white border border-gray-200/80 px-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-14 w-full focus-within:border-orange-200 focus-within:ring-4 focus-within:ring-orange-50/50 transition-all">
+					<div class="text-gray-400">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+					</div>
+					<input type="text" id="search-input" placeholder="Cerca un progetto o competenza..." class="w-full bg-transparent text-lg font-light text-gray-800 placeholder-gray-400/70 outline-none border-none p-0 tracking-tight" autocomplete="off" />
+					<div class="hidden sm:flex items-center justify-center px-2 py-1 bg-gray-50 border border-gray-200 rounded-md text-xs text-gray-400 font-mono tracking-widest cursor-default">⌘K</div>
+				</div>
 
-	<div id="search-dropdown" class="absolute top-full left-0 right-0 mt-3 bg-white border border-gray-200/80 rounded-2xl shadow-[0_20px_40px_rgb(0,0,0,0.08)] overflow-hidden opacity-0 pointer-events-none translate-y-[-10px] transition-all duration-200 z-40">
-		<div class="max-h-64 md:max-h-72 overflow-y-auto custom-scrollbar p-2" id="search-results">
-			</div>
-	</div>
-</div>
+				<div class="flex items-center gap-2 relative" id="icons-container">
+					<button id="bio-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-orange-200 hover:bg-orange-50 text-gray-400 hover:text-orange-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Bio">
+						<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+					</button>
 
-			<div class="flex items-center gap-2 relative" id="social-menu-container">
-				<button id="bio-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-orange-200 hover:bg-orange-50 text-gray-400 hover:text-orange-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Bio">
-					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-				</button>
+					<button id="works-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-blue-200 hover:bg-blue-50 text-gray-400 hover:text-blue-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Works">
+						<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+					</button>
 
-				<button id="works-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-blue-200 hover:bg-blue-50 text-gray-400 hover:text-blue-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Works">
-					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-				</button>
+					<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-green-200 hover:bg-green-50 text-gray-400 hover:text-green-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Mail" onclick="window.location.href='mailto:giambattista.carmignani@gmail.com'">
+						<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+					</button>
 
-				<button class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-green-200 hover:bg-green-50 text-gray-400 hover:text-green-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Mail" onclick="window.location.href='mailto:giambattista.carmignani@gmail.com'">
-					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-				</button>
-
-				<button id="social-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-yellow-200 hover:bg-yellow-50 text-gray-400 hover:text-yellow-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Social">
-					<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-				</button>
-				<div id="social-dropdown" class="absolute top-full right-0 mt-4 w-48 bg-white border border-gray-200 rounded-2xl shadow-xl opacity-0 -translate-y-2 pointer-events-none transition-all duration-200 z-50">
-					<div class="p-2 flex flex-col gap-1">
-						<a href="#" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">LinkedIn</span></a>
-						<a href="#" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">Substack</span></a>
-						<a href="#" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">GitHub</span></a>
-						<a href="#" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">Bluesky</span></a>
+					<div class="relative" id="social-menu-container">
+						<button id="social-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-yellow-200 hover:bg-yellow-50 text-gray-400 hover:text-yellow-600 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Social">
+							<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+						</button>
+						<div id="social-dropdown" class="absolute top-full right-0 mt-4 w-48 bg-white border border-gray-200 rounded-2xl shadow-xl opacity-0 -translate-y-2 pointer-events-none transition-all duration-200 z-50">
+							<div class="p-2 flex flex-col gap-1">
+								<a href="#" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">LinkedIn</span></a>
+								<a href="#" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">Substack</span></a>
+								<a href="#" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">GitHub</span></a>
+								<a href="#" target="_blank" class="flex items-center gap-3 px-3 py-2 hover:bg-yellow-50 rounded-xl text-gray-600 hover:text-yellow-700 transition-colors"><span class="text-sm font-medium">Bluesky</span></a>
+							</div>
+						</div>
 					</div>
 				</div>
+			</div>
+
+			<div id="search-dropdown" class="absolute top-full left-0 right-0 mt-3 bg-white border border-gray-200/80 rounded-2xl shadow-[0_20px_40px_rgb(0,0,0,0.08)] overflow-hidden opacity-0 pointer-events-none translate-y-[-10px] transition-all duration-200 z-40">
+				<div class="max-h-64 md:max-h-72 overflow-y-auto custom-scrollbar p-2" id="search-results">
+					</div>
 			</div>
 		</div>
 	</main>
@@ -143,6 +145,23 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
+	// ==========================================
+	// 1. VARIABILI E DATI
+	// ==========================================
+	let currentResults: any[] = [];
+	let selectedIndex: number = -1;
+
+	const mockData = [
+		{ title: "Ottimizzazione Flussi Operativi", category: "Works", action: "openWorks" },
+		{ title: "Profilo e Background", category: "Bio", action: "openBio" },
+		{ title: "Contattami via Email", category: "Mail", action: "mailto" },
+		{ title: "Profilo LinkedIn", category: "Social", action: "null" },
+		{ title: "Gestione del Team", category: "Articolo", action: "null" }
+	];
+
+	// ==========================================
+	// 2. ELEMENTI DEL DOM
+	// ==========================================
 	const socialBtn = document.getElementById('social-button');
 	const socialDropdown = document.getElementById('social-dropdown');
 	const socialContainer = document.getElementById('social-menu-container');
@@ -157,140 +176,183 @@ import Layout from '../layouts/Layout.astro';
 	const bioCard = bioModal?.querySelector('div');
 	const closeBio = document.getElementById('close-bio');
 
-	// --- SOCIAL ---
+	const searchWrapper = document.getElementById('search-and-icons-wrapper');
+	const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+	const searchDropdown = document.getElementById('search-dropdown');
+	const searchResults = document.getElementById('search-results');
+
+	// ==========================================
+	// 3. FUNZIONI DI CONTROLLO UI
+	// ==========================================
 	const hideSocial = () => {
 		socialDropdown?.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
 	};
-	socialBtn?.addEventListener('click', (e) => {
+
+	const openWorksModal = () => {
+		worksModal?.classList.remove('opacity-0', 'pointer-events-none');
+		worksCard?.classList.remove('scale-95');
+		worksCard?.classList.add('scale-100');
+		hideSocial();
+		hideResults();
+	};
+
+	const hideWorksModal = () => {
+		worksModal?.classList.add('opacity-0', 'pointer-events-none');
+		worksCard?.classList.remove('scale-100');
+		worksCard?.classList.add('scale-95');
+	};
+
+	const openBioModal = () => {
+		bioModal?.classList.remove('opacity-0', 'pointer-events-none');
+		bioCard?.classList.remove('scale-95');
+		bioCard?.classList.add('scale-100');
+		hideSocial();
+		hideResults();
+	};
+
+	const hideBioModal = () => {
+		bioModal?.classList.add('opacity-0', 'pointer-events-none');
+		bioCard?.classList.remove('scale-100');
+		bioCard?.classList.add('scale-95');
+	};
+
+	const hideResults = () => {
+		searchDropdown?.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+	};
+
+	const renderResultItem = (item: any, index: number) => {
+		const isSelected = index === selectedIndex;
+		
+		const bgClass = isSelected ? 'bg-orange-50/50' : 'hover:bg-orange-50/50';
+		const textClass = isSelected ? 'text-orange-600' : 'text-gray-900 group-hover:text-orange-600';
+		const tagBgClass = isSelected ? 'bg-orange-100' : 'bg-gray-100 group-hover:bg-orange-100';
+		const tagTextClass = isSelected ? 'text-orange-600' : 'text-gray-400 group-hover:text-orange-600';
+
+		return `
+			<button id="search-item-${index}" class="w-full text-left flex items-center justify-between px-4 py-3 rounded-xl transition-colors group cursor-pointer ${bgClass}" onclick="handleSearchResult('${item.action}')" onmousemove="updateSelection(${index})">
+				<span class="font-light transition-colors ${textClass}">${item.title}</span>
+				<span class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded-md transition-colors ${tagBgClass} ${tagTextClass}">${item.category}</span>
+			</button>
+		`;
+	};
+
+	const renderList = (query: string) => {
+		if (currentResults.length === 0) {
+			if(searchResults) searchResults.innerHTML = `<div class="px-4 py-8 text-center text-gray-400 font-light">Nessun risultato per "${query}"</div>`;
+		} else {
+			const headerHtml = query === '' ? `<div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest">Suggeriti</div>` : '';
+			if(searchResults) searchResults.innerHTML = headerHtml + currentResults.map((item, i) => renderResultItem(item, i)).join('');
+		}
+
+		if (selectedIndex >= 0) {
+			const selectedEl = document.getElementById(`search-item-${selectedIndex}`);
+			if (selectedEl) selectedEl.scrollIntoView({ block: 'nearest' });
+		}
+	};
+
+	const showResults = (query: string = '') => {
+		if (query) {
+			currentResults = mockData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()) || item.category.toLowerCase().includes(query.toLowerCase()));
+		} else {
+			currentResults = mockData;
+		}
+
+		selectedIndex = currentResults.length > 0 ? 0 : -1;
+		renderList(query);
+		searchDropdown?.classList.remove('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+		hideSocial();
+	};
+
+	// Dichiariamo queste funzioni su window dicendo a TypeScript di fidarsi (any)
+	(window as any).updateSelection = (index: number) => {
+		if (selectedIndex !== index) {
+			selectedIndex = index;
+			renderList(searchInput ? searchInput.value : '');
+		}
+	};
+
+	(window as any).handleSearchResult = (action: string) => {
+		hideResults();
+		if(searchInput) searchInput.value = '';
+		
+		if (action === 'openBio') openBioModal();
+		if (action === 'openWorks') openWorksModal();
+		if (action === 'mailto') window.location.href = 'mailto:giambattista.carmignani@gmail.com';
+	};
+
+	// ==========================================
+	// 4. EVENT LISTENERS
+	// ==========================================
+	socialBtn?.addEventListener('click', (e: Event) => {
 		e.stopPropagation();
 		socialDropdown?.classList.toggle('opacity-0');
 		socialDropdown?.classList.toggle('-translate-y-2');
 		socialDropdown?.classList.toggle('pointer-events-none');
 	});
 
-	// --- WORKS MODAL ---
-	const openWorksModal = () => {
-		worksModal?.classList.remove('opacity-0', 'pointer-events-none');
-		worksCard?.classList.remove('scale-95');
-		worksCard?.classList.add('scale-100');
-		hideSocial();
-	};
-	const hideWorksModal = () => {
-		worksModal?.classList.add('opacity-0', 'pointer-events-none');
-		worksCard?.classList.remove('scale-100');
-		worksCard?.classList.add('scale-95');
-	};
 	worksBtn?.addEventListener('click', openWorksModal);
 	closeWorks?.addEventListener('click', hideWorksModal);
 
-	// --- BIO MODAL ---
-	const openBioModal = () => {
-		bioModal?.classList.remove('opacity-0', 'pointer-events-none');
-		bioCard?.classList.remove('scale-95');
-		bioCard?.classList.add('scale-100');
-		hideSocial();
-	};
-	const hideBioModal = () => {
-		bioModal?.classList.add('opacity-0', 'pointer-events-none');
-		bioCard?.classList.remove('scale-100');
-		bioCard?.classList.add('scale-95');
-	};
 	bioBtn?.addEventListener('click', openBioModal);
 	closeBio?.addEventListener('click', hideBioModal);
 
-	// --- CHIUSURA GLOBALE ---
-	document.addEventListener('click', (e) => {
-		if (!socialContainer?.contains(e.target)) hideSocial();
-		if (e.target === worksModal) hideWorksModal();
-		if (e.target === bioModal) hideBioModal();
-	});
-
-	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape') {
-			hideSocial();
-			if (!worksModal?.classList.contains('opacity-0')) hideWorksModal();
-			if (!bioModal?.classList.contains('opacity-0')) hideBioModal();
-		}
-	});
-
-    	// --- MOTORE DI RICERCA SPOTLIGHT ---
-	const searchContainer = document.getElementById('search-container');
-	const searchInput = document.getElementById('search-input');
-	const searchDropdown = document.getElementById('search-dropdown');
-	const searchResults = document.getElementById('search-results');
-
-	// Database fittizio iniziale
-	const mockData = [
-		{ title: "Ottimizzazione Flussi Operativi", category: "Works", action: "openWorks" },
-		{ title: "Tech Strategy & Integration", category: "Works", action: "openWorks" },
-		{ title: "Operational Leadership", category: "Works", action: "openWorks" },
-		{ title: "Profilo e Background", category: "Bio", action: "openBio" },
-		{ title: "Gestione del Team", category: "Competenza", action: null },
-		{ title: "Contattami via Email", category: "Azione", action: "mailto" }
-	];
-
-	// Funzione per generare l'HTML di una singola riga di risultato
-	const renderResultItem = (item) => `
-		<button class="w-full text-left flex items-center justify-between px-4 py-3 hover:bg-gray-50 rounded-xl transition-colors group cursor-pointer" onclick="handleSearchResult('${item.action}')">
-			<span class="text-gray-900 font-light group-hover:text-orange-600 transition-colors">${item.title}</span>
-			<span class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold bg-gray-100 px-2 py-1 rounded-md group-hover:bg-orange-50 group-hover:text-orange-500 transition-colors">${item.category}</span>
-		</button>
-	`;
-
-	// Mostra i risultati
-	const showResults = (query = '') => {
-		let filtered = mockData;
-		if (query) {
-			filtered = mockData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()) || item.category.toLowerCase().includes(query.toLowerCase()));
-		}
-
-		if (filtered.length === 0) {
-			searchResults.innerHTML = `<div class="px-4 py-8 text-center text-gray-400 font-light">Nessun risultato per "${query}"</div>`;
-		} else {
-			// Aggiunge un piccolo titolo "Suggeriti" se la barra è vuota
-			const headerHtml = query === '' ? `<div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest">Suggeriti</div>` : '';
-			searchResults.innerHTML = headerHtml + filtered.map(renderResultItem).join('');
-		}
-
-		searchDropdown.classList.remove('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
-		hideSocial(); // Chiude eventuali altri menu aperti
-	};
-
-	const hideResults = () => {
-		searchDropdown.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
-	};
-
-	// Event Listeners della barra
 	searchInput?.addEventListener('focus', () => showResults(searchInput.value));
 	
-	searchInput?.addEventListener('input', (e) => showResults(e.target.value));
+	// Diciamo a TS che l'evento input viene da un HTMLInputElement
+	searchInput?.addEventListener('input', (e: Event) => {
+		const target = e.target as HTMLInputElement;
+		showResults(target.value);
+	});
 
-	// Chiude la barra cliccando fuori
-	document.addEventListener('click', (e) => {
-		if (!searchContainer?.contains(e.target)) {
-			hideResults();
+	searchInput?.addEventListener('keydown', (e: KeyboardEvent) => {
+		const isDropdownOpen = !searchDropdown?.classList.contains('opacity-0');
+		if (!isDropdownOpen) return;
+
+		if (e.key === 'ArrowDown') {
+			e.preventDefault();
+			selectedIndex = (selectedIndex + 1) % currentResults.length;
+			renderList(searchInput.value);
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault();
+			selectedIndex = (selectedIndex - 1 + currentResults.length) % currentResults.length;
+			renderList(searchInput.value);
+		} else if (e.key === 'Enter') {
+			e.preventDefault();
+			if (selectedIndex >= 0 && selectedIndex < currentResults.length) {
+				(window as any).handleSearchResult(currentResults[selectedIndex].action);
+			}
 		}
 	});
 
-	// Scorciatoia da tastiera globale (Cmd+K o Ctrl+K)
-	document.addEventListener('keydown', (e) => {
+	// === CHIUSURA GLOBALE (Clic fuori o ESC) ===
+	document.addEventListener('click', (e: MouseEvent) => {
+		// Diciamo a TS che stiamo cliccando su un Node
+		const target = e.target as Node;
+		
+		// Chiude Search
+		if (searchWrapper && !searchWrapper.contains(target)) {
+			hideResults();
+		}
+		// Chiude Social
+		if (socialContainer && !socialContainer.contains(target)) {
+			hideSocial();
+		}
+		// Chiude Modali
+		if (target === worksModal) hideWorksModal();
+		if (target === bioModal) hideBioModal();
+	});
+
+	document.addEventListener('keydown', (e: KeyboardEvent) => {
 		if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
 			e.preventDefault();
 			searchInput?.focus();
 		}
 		if (e.key === 'Escape') {
 			hideResults();
+			hideSocial();
+			if (!worksModal?.classList.contains('opacity-0')) hideWorksModal();
+			if (!bioModal?.classList.contains('opacity-0')) hideBioModal();
 			searchInput?.blur();
 		}
 	});
-
-	// Gestione finta dei clic sui risultati
-	window.handleSearchResult = (action) => {
-		hideResults();
-		searchInput.value = ''; // Pulisce la barra
-		
-		if (action === 'openBio') openBioModal();
-		if (action === 'openWorks') openWorksModal();
-		if (action === 'mailto') window.location.href = 'mailto:giambattista.carmignani@gmail.com';
-	};
 </script>
