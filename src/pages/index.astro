@@ -21,12 +21,21 @@ import Layout from '../layouts/Layout.astro';
 
 		<div class="w-full max-w-3xl flex flex-col md:flex-row items-center gap-4">
 			
-			<div class="flex-1 flex items-center gap-3 bg-white border border-gray-200/80 px-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-14 w-full">
-				<div class="text-gray-400">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-				</div>
-				<input type="text" placeholder="Cerca un progetto o competenza..." class="w-full bg-transparent text-lg font-light text-gray-800 placeholder-gray-400/70 outline-none border-none p-0 tracking-tight" readonly />
+			<div class="flex-1 relative w-full" id="search-container">
+	<div class="flex items-center gap-3 bg-white border border-gray-200/80 px-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-14 w-full focus-within:border-orange-200 focus-within:ring-4 focus-within:ring-orange-50/50 transition-all z-50 relative">
+		<div class="text-gray-400">
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+		</div>
+		<input type="text" id="search-input" placeholder="Cerca un progetto o competenza..." class="w-full bg-transparent text-lg font-light text-gray-800 placeholder-gray-400/70 outline-none border-none p-0 tracking-tight" autocomplete="off" />
+		
+		<div class="hidden sm:flex items-center justify-center px-2 py-1 bg-gray-50 border border-gray-200 rounded-md text-xs text-gray-400 font-mono tracking-widest cursor-default">⌘K</div>
+	</div>
+
+	<div id="search-dropdown" class="absolute top-full left-0 right-0 mt-3 bg-white border border-gray-200/80 rounded-2xl shadow-[0_20px_40px_rgb(0,0,0,0.08)] overflow-hidden opacity-0 pointer-events-none translate-y-[-10px] transition-all duration-200 z-40">
+		<div class="max-h-64 md:max-h-72 overflow-y-auto custom-scrollbar p-2" id="search-results">
 			</div>
+	</div>
+</div>
 
 			<div class="flex items-center gap-2 relative" id="social-menu-container">
 				<button id="bio-button" class="w-14 h-14 flex items-center justify-center rounded-2xl bg-white border border-gray-200/80 hover:border-orange-200 hover:bg-orange-50 text-gray-400 hover:text-orange-500 transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] cursor-pointer" title="Bio">
@@ -203,4 +212,85 @@ import Layout from '../layouts/Layout.astro';
 			if (!bioModal?.classList.contains('opacity-0')) hideBioModal();
 		}
 	});
+
+    	// --- MOTORE DI RICERCA SPOTLIGHT ---
+	const searchContainer = document.getElementById('search-container');
+	const searchInput = document.getElementById('search-input');
+	const searchDropdown = document.getElementById('search-dropdown');
+	const searchResults = document.getElementById('search-results');
+
+	// Database fittizio iniziale
+	const mockData = [
+		{ title: "Ottimizzazione Flussi Operativi", category: "Works", action: "openWorks" },
+		{ title: "Tech Strategy & Integration", category: "Works", action: "openWorks" },
+		{ title: "Operational Leadership", category: "Works", action: "openWorks" },
+		{ title: "Profilo e Background", category: "Bio", action: "openBio" },
+		{ title: "Gestione del Team", category: "Competenza", action: null },
+		{ title: "Contattami via Email", category: "Azione", action: "mailto" }
+	];
+
+	// Funzione per generare l'HTML di una singola riga di risultato
+	const renderResultItem = (item) => `
+		<button class="w-full text-left flex items-center justify-between px-4 py-3 hover:bg-gray-50 rounded-xl transition-colors group cursor-pointer" onclick="handleSearchResult('${item.action}')">
+			<span class="text-gray-900 font-light group-hover:text-orange-600 transition-colors">${item.title}</span>
+			<span class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold bg-gray-100 px-2 py-1 rounded-md group-hover:bg-orange-50 group-hover:text-orange-500 transition-colors">${item.category}</span>
+		</button>
+	`;
+
+	// Mostra i risultati
+	const showResults = (query = '') => {
+		let filtered = mockData;
+		if (query) {
+			filtered = mockData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()) || item.category.toLowerCase().includes(query.toLowerCase()));
+		}
+
+		if (filtered.length === 0) {
+			searchResults.innerHTML = `<div class="px-4 py-8 text-center text-gray-400 font-light">Nessun risultato per "${query}"</div>`;
+		} else {
+			// Aggiunge un piccolo titolo "Suggeriti" se la barra è vuota
+			const headerHtml = query === '' ? `<div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest">Suggeriti</div>` : '';
+			searchResults.innerHTML = headerHtml + filtered.map(renderResultItem).join('');
+		}
+
+		searchDropdown.classList.remove('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+		hideSocial(); // Chiude eventuali altri menu aperti
+	};
+
+	const hideResults = () => {
+		searchDropdown.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+	};
+
+	// Event Listeners della barra
+	searchInput?.addEventListener('focus', () => showResults(searchInput.value));
+	
+	searchInput?.addEventListener('input', (e) => showResults(e.target.value));
+
+	// Chiude la barra cliccando fuori
+	document.addEventListener('click', (e) => {
+		if (!searchContainer?.contains(e.target)) {
+			hideResults();
+		}
+	});
+
+	// Scorciatoia da tastiera globale (Cmd+K o Ctrl+K)
+	document.addEventListener('keydown', (e) => {
+		if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+			e.preventDefault();
+			searchInput?.focus();
+		}
+		if (e.key === 'Escape') {
+			hideResults();
+			searchInput?.blur();
+		}
+	});
+
+	// Gestione finta dei clic sui risultati
+	window.handleSearchResult = (action) => {
+		hideResults();
+		searchInput.value = ''; // Pulisce la barra
+		
+		if (action === 'openBio') openBioModal();
+		if (action === 'openWorks') openWorksModal();
+		if (action === 'mailto') window.location.href = 'mailto:giambattista.carmignani@gmail.com';
+	};
 </script>
